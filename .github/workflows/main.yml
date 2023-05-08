@@ -1,0 +1,96 @@
+name: "Collect and Repair"
+on:
+  schedule:
+  - cron: "*0,30 0-23/12* * * *"
+  workflow_dispatch: {}
+
+jobs:
+  actions:
+    runs-on: ubuntu-22.04
+    permissions: write-all
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v3"
+      
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install pip
+        run: |
+          python -m ensurepip --upgrade
+      
+      - name: Install dependencies with pip
+        run: |
+          pip install -r requirements.txt
+          pip install actionsMCP --upgrade
+          
+      - name: Set up Node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          
+      - name: Install dependencies with npm
+        run: npm install
+      
+      - name: Collect resources
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
+        run: |
+          python3 collect_resources_hash.py
+          echo "## Getting resources hash" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Sign message
+        env:
+            PRIVATE_KEY_TRON: ${{ secrets.PRIVATE_KEY_TRON }}
+            PRIVATE_KEY_ETH: ${{ secrets.PRIVATE_KEY_ETH }}
+            PRIVATE_KEY_BSC: ${{ secrets.PRIVATE_KEY_BSC }}
+        run: |
+          python3 get_sign_message.py
+          echo "## Getting signed messages" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Send transaction
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
+        run: |
+          python3 send_transaction.py
+          echo "## Sending transaction" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Repair buildings
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
+        run: |
+          python3 repair_buildings_hash.py
+          echo "## Getting repair hash" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Sign message
+        env:
+            PRIVATE_KEY_TRON: ${{ secrets.PRIVATE_KEY_TRON }}
+            PRIVATE_KEY_ETH: ${{ secrets.PRIVATE_KEY_ETH }}
+            PRIVATE_KEY_BSC: ${{ secrets.PRIVATE_KEY_BSC }}
+        run: |
+          python3 get_sign_message.py
+          echo "## Getting signed messages" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Send transaction
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
+        run: |
+          python3 send_transaction.py
+          echo "## Sending transaction" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
