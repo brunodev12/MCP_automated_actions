@@ -1,0 +1,8 @@
+{
+    "name": "mcp-automated-actions",
+    "version": "1.0.0",
+    "dependencies": {
+      "tronweb": "5.1.0"
+    }
+  }
+  
