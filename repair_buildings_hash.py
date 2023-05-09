@@ -38,11 +38,13 @@ for i in building_list:
     building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
                          'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
 
-with open("building_info.json", "w") as jsonfile:
-    json.dump(building_info, jsonfile)
+print("=======================BUILDING INFO========================")
+for i in building_info:
+    print(i)
 
 hash_list = []
 
+print("======================READY TO REPAIR=======================")
 for i, j in zip(building_info, building_list):
     token_id = i['tokenId']
     if token_id == j['Token id']:
@@ -60,7 +62,7 @@ for i, j in zip(building_info, building_list):
                 if message is not None:
                     hash = getTxHashRepair(message, side)
                     hash_list.append([hash, side])
-                    print(hash)
+                    print(hash, token_id)
 
 
 with open("hash_list.json", "w") as jsonfile:

@@ -1,1 +1,4 @@
 node_modules/
+hash_list.json
+sign_message_list.json
+__pycache__

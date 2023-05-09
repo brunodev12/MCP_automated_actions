@@ -39,8 +39,13 @@ for i in building_list:
     building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
                          'usages': data['building_stat']['usages'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
 
+print("=======================BUILDING INFO========================")
+for i in building_info:
+    print(i)
+
 hash_list = []
 
+print("======================READY TO COLLECT======================")
 actual_time = int(time.time())
 for i, j in zip(building_info, building_list):
     token_id = i['tokenId']
@@ -62,7 +67,7 @@ for i, j in zip(building_info, building_list):
                     if daysLeft == 0:
                         hash = getTxHashCollect(message, side)
                         hash_list.append([hash, side])
-                        print(hash)
+                        print(token_id, hash)
                     elif speed_up:
                         lastSpeedUp = i['lastSpeedUp']
                         last_speed_up = time.mktime(time.strptime(
@@ -73,7 +78,7 @@ for i, j in zip(building_info, building_list):
                                                     token_id, i['buildingId'], i['actionId'])
                             hash = getTxHashCollect(message, side)
                             hash_list.append([hash, side])
-                            print(hash)
+                            print(token_id, hash)
 
 with open("hash_list.json", "w") as jsonfile:
     json.dump(hash_list, jsonfile)
