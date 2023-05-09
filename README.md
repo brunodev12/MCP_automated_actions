@@ -56,7 +56,7 @@ You should see something like this:
 If you don't want to collect set the values to 0 in **Collect every X days** for the corresponding buildings.
 If you don't want to repair set the values to 0 in **Repair when conditions is X** for the corresponding buildings.
 
-For residential or office buildings, set the collection value to 0, since that function is not enabled at the moment.
+For residential, office or factories buildings, set the collection value to 0, since that function is not enabled at the moment.
 In case you set a collection value other than 0, there will be no change but the bot execution will be a bit slower.
 
 Repair works on any building.
