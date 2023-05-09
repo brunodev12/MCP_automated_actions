@@ -8,7 +8,7 @@ Perform automated actions in the MegaCryptoPolis game
 This bot obtains the hashes necessary to execute collection and repair transactions in the game.
 These hashes are obtained through requests in the buildings detailed in the worksheet.
 
-The private key is then used to sign the hashes, in the ```get_sign_message.py``` script which imports the script:
+The private key is used to sign the hashes, in the ```get_sign_message.py``` script which imports the script:
 
 ```sign_message_evm.py```, ```sign_message_tron.js``` and ```sign_message_tron.py```
 
