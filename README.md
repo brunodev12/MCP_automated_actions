@@ -74,6 +74,11 @@ Once the buildings are configured you must download the file as .csv:
 
 Make sure you have only one .csv file on GitHub, if there is another file it can cause the bot to run slower or fail. You can delete the files directly from GitHub
 
+Once everything is set up your repository should look like this:
+
+![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/c1e31cb8-62e5-478e-8646-d38d846adec1)
+
+
 ### - Step 5: Run the bot
 
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/09b19959-c52b-452f-82b6-18890cc4b485)
