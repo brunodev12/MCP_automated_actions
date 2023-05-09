@@ -1,7 +1,7 @@
 name: "Collect and Repair"
 on:
   schedule:
-  - cron: "*/360 * * * *"
+  - cron: "*15 */6 * * *"
   workflow_dispatch: {}
 
 jobs:
