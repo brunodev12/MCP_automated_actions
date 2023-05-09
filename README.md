@@ -108,7 +108,7 @@ It's done. The bot will run every 6 hours.
 
 Enjoy it :)
 
-Any questions you can send me an email to: bruno.carter.dev@gmail.com
+If you have any questions you can send me an email to: bruno.carter.dev@gmail.com
 
 ## Disclaimer
 
