@@ -54,6 +54,7 @@ You should see something like this:
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/4e808ba1-183f-4b4a-bb60-c5fc2d016570)
 
 If you don't want to collect set the values to 0 in **Collect every X days** for the corresponding buildings.
+
 If you don't want to repair set the values to 0 in **Repair when conditions is X** for the corresponding buildings.
 
 For residential, office or factories buildings, set the collection value to 0, since that function is not enabled at the moment.
