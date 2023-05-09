@@ -36,7 +36,7 @@ for i in building_list:
     side = i['Network']
     data = getLandData(i['X'], i['Y'], side)
     building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
-                         'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
+                         'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id']})
 
 print("=======================BUILDING INFO========================")
 for i in building_info:
