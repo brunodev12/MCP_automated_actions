@@ -3,6 +3,23 @@ Perform automated actions in the MegaCryptoPolis game
 
 **Only available for testers at the moment**
 
+## How does it work?
+
+This bot obtains the hashes necessary to execute collection and repair transactions in the game.
+These hashes are obtained through requests in the buildings detailed in the worksheet.
+
+The private key is then used to sign the hashes, in the ```get_sign_message.py``` script which imports the script:
+
+```sign_message_evm.py```, ```sign_message_tron.js``` and ```sign_message_tron.py```
+
+Feel free to review the scripts, you can also review the ```main.yml``` file where you can verify that the private key is only imported to sign the messages.
+
+After obtaining the signed messages, a request is made to execute the transaction.
+
+## Security
+
+For your security, please enable two-step verification on your GitHub account and do not add collaborators to this repository.
+
 ## How to install
 
 ### - Step 1 : Fork this repository
@@ -93,6 +110,11 @@ Enjoy it :)
 
 Any questions you can send me an email to: bruno.carter.dev@gmail.com
 
+## Disclaimer
+
+This repository is licensed under the GNU General Public License v3.0, which establishes that the author is not responsible for any kind of damage that this program may cause.
+
+By using it you accept the terms and conditions.
 
 
 
