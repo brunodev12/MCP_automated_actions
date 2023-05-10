@@ -73,11 +73,11 @@ You should see something like this:
 
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/4e808ba1-183f-4b4a-bb60-c5fc2d016570)
 
-If you don't want to collect set the values to 0 in **Collect every X days** for the corresponding buildings.
+If you don't want to collect set the values to 0 in ```Collect every X days``` for the corresponding buildings.
 
-If you don't want to repair set the values to 0 in **Repair when conditions is X** for the corresponding buildings.
+If you don't want to repair set the values to 0 in ```Repair when conditions is X``` for the corresponding buildings.
 
-Speed Up: should be **on** if you want to collect early, for example collect every 3 days in a level 1 industry.
+Speed Up: should be ```yes``` if you want to collect early, for example collect every 3 days in a level 1 industry.
 
 For residential, office or factories buildings, set the collection value to 0, since that function is not enabled at the moment.
 In case you set a collection value other than 0, there will be no change but the bot execution will be a bit slower.
