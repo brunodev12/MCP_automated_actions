@@ -19,6 +19,7 @@ After obtaining the signed messages, a request is made to execute the transactio
 ## Security
 
 For your security, please enable two-step verification on your GitHub account and do not add collaborators to this repository.
+This way, your secret variables will be more secure.
 
 ## How to install
 
