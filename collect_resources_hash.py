@@ -47,6 +47,10 @@ for i in building_list:
 with open("building_info.json", "w") as jsonfile:
     json.dump(building_info, jsonfile)
 
+print("=======================BUILDING INFO========================")
+for i in building_info:
+    print(i)
+
 hash_list = []
 
 print("======================READY TO COLLECT======================")
