@@ -39,17 +39,17 @@ This way, your secret variables will be more secure.
 
 The names of the secret variables must be:
 
-**ADDRESS_BSC**
+```ADDRESS_BSC```
 
-**ADDRESS_ETH**
+```ADDRESS_ETH```
 
-**ADDRESS_TRON**
+```ADDRESS_TRON```
 
-**PRIVATE_KEY_BSC**
+```PRIVATE_KEY_BSC```
 
-**PRIVATE_KEY_ETH**
+```PRIVATE_KEY_ETH```
 
-**PRIVATE_KEY_TRON**
+```PRIVATE_KEY_TRON```
 
 NOTE: You don't need to add the addresses/private keys of all the chains, just the addresses/private key of the side you want to collect/repair.
 
@@ -73,6 +73,10 @@ You should see something like this:
 
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/4e808ba1-183f-4b4a-bb60-c5fc2d016570)
 
+You can get the building information here:
+
+![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/d1a33abf-fa57-452f-838e-8cd4f51f166b)
+
 If you don't want to collect set the values to 0 in ```Collect every X days``` for the corresponding buildings.
 
 If you don't want to repair set the values to 0 in ```Repair when conditions is X``` for the corresponding buildings.
@@ -88,7 +92,7 @@ Once the buildings are configured you must download the file as .csv:
 
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/d8a761bc-a75e-4e04-90d4-318d8c758c15)
 
-### - Step 4: Upload the .csv file to repository
+### - Step 4: Upload the .csv file to the repository
 
 ![image](https://github.com/brunodev12/MCP_automated_actions/assets/112636008/81cf8db5-90da-4e48-8748-88170b96d2cf)
 
