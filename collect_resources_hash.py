@@ -71,7 +71,7 @@ for i, j in zip(building_info, building_list):
                     if daysLeft == 0:
                         hash = getTxHashCollect(message, side)
                         hash_list.append([hash, side])
-                        print(token_id, hash)
+                        print(hash, "token id:", token_id)
                     elif speed_up:
                         lastSpeedUp = i['lastSpeedUp']
                         last_speed_up = time.mktime(time.strptime(
@@ -82,7 +82,7 @@ for i, j in zip(building_info, building_list):
                                                     token_id, i['buildingId'], i['actionId'])
                             hash = getTxHashCollect(message, side)
                             hash_list.append([hash, side])
-                            print(token_id, hash)
+                            print(hash, "token id:", token_id)
 
 with open("hash_list.json", "w") as jsonfile:
     json.dump(hash_list, jsonfile)
