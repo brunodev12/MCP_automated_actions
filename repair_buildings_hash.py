@@ -1,8 +1,7 @@
 import csv
 import json
-from actionsMCP.entry_point import getLandData, getMessageRepair, getTxHashRepair
+from actionsMCP.entry_point import getMessageRepair, getTxHashRepair
 from tron_to_eth import tronToEth
-import random
 import os
 
 building_list = []
@@ -23,20 +22,11 @@ address_dict = {
     "bsc": os.environ.get('ADDRESS_BSC')
 }
 
-idx_dict = {
-    "trx": random.randint(10000000, 99999999),
-    "eth": random.randint(10000000, 99999999),
-    "bsc": random.randint(10000000, 99999999)
-}
+with open("idx.json") as jsonfile:
+    idx_dict = json.load(jsonfile)
 
-building_info = []
-
-for i in building_list:
-    # print(i['Token id'], i['X'], i['Y'], i['Collect every X days'], i['Repair when conditions is X'], i['Speed up'], i['Network'])
-    side = i['Network']
-    data = getLandData(i['X'], i['Y'], side)
-    building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
-                         'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id']})
+with open("building_info.json") as jsonfile:
+    building_info = json.load(jsonfile)
 
 print("=======================BUILDING INFO========================")
 for i in building_info:

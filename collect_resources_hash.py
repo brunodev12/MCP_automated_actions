@@ -30,18 +30,22 @@ idx_dict = {
     "bsc": random.randint(10000000, 99999999)
 }
 
+with open("idx.json", "w") as jsonfile:
+    json.dump(idx_dict, jsonfile)
+
 building_info = []
 
 for i in building_list:
     # print(i['Token id'], i['X'], i['Y'], i['Collect every X days'], i['Repair when conditions is X'], i['Speed up'], i['Network'])
     side = i['Network']
-    data = getLandData(i['X'], i['Y'], side)
-    building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
-                         'usages': data['building_stat']['usages'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
+    address = address_dict[side]
+    data = getLandData(i['X'], i['Y'], side, address)
+    if data is not None:
+        building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
+                         'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
 
-print("=======================BUILDING INFO========================")
-for i in building_info:
-    print(i)
+with open("building_info.json", "w") as jsonfile:
+    json.dump(building_info, jsonfile)
 
 hash_list = []
 
