@@ -52,7 +52,7 @@ for i, j in zip(building_info, building_list):
                 if message is not None:
                     hash = getTxHashRepair(message, side)
                     hash_list.append([hash, side])
-                    print(hash, token_id)
+                    print(hash, "token id:", token_id)
 
 
 with open("hash_list.json", "w") as jsonfile:
