@@ -18,8 +18,18 @@ After obtaining the signed messages, a request is made to execute the transactio
 
 ## Security
 
-For your security, please enable two-step verification on your GitHub account and do not add collaborators to this repository.
+### How is your private key protected?
+- The private key and the public key are kept as secret variables, so no one has access to them.
+- The scripts where the private key is used are fully visible so you can see what happens with it (sign a message, which is visible as well)
+- When executing the script in 'Actions' the private variables are set to be used only in the ```get_sign_message.py``` script, after being used, the next step is to unset the private keys, like this they will not be used in any other script.
+
+### Risks and how to avoid them
+
+There is a chance someone could get your private key and that is by gaining access to your Github or this repository.
+So for your security, please enable two-step verification on your GitHub account and do not add collaborators to this repository.
 This way, your secret variables will be more secure.
+
+You can also use a burner wallet if you still don't feel confident, but keep in mind that your MCP buildings must be there.
 
 ## How to install
 
