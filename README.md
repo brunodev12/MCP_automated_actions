@@ -27,9 +27,9 @@ After obtaining the signed messages, a request is made to execute the transactio
 
 There is a chance someone could get your private key and that is by gaining access to your Github or this repository.
 So for your security, please enable two-step verification on your GitHub account and do not add collaborators to this repository.
+This way, your secret variables will be more secure.
 
 You can also set this repository to private (note that GitHub Actions are limited to 2000 minutes per month for private repositories)
-This way, your secret variables will be more secure.
 
 You can use a burner wallet, but keep in mind that your MCP buildings must be there.
 
