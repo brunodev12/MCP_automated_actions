@@ -62,12 +62,20 @@ jobs:
           unset PRIVATE_KEY_BSC
 
       - name: Send transaction
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
         run: |
           python3 send_transaction.py
           echo "## Sending transaction" >> $GITHUB_STEP_SUMMARY
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
       
       - name: Repair buildings
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
         run: |
           python3 repair_buildings_hash.py
           echo "## Getting repair hash" >> $GITHUB_STEP_SUMMARY
@@ -90,6 +98,10 @@ jobs:
           unset PRIVATE_KEY_BSC
 
       - name: Send transaction
+        env:
+            ADDRESS_TRON: ${{ secrets.ADDRESS_TRON }}
+            ADDRESS_ETH: ${{ secrets.ADDRESS_ETH }}
+            ADDRESS_BSC: ${{ secrets.ADDRESS_BSC }}
         run: |
           python3 send_transaction.py
           echo "## Sending transaction" >> $GITHUB_STEP_SUMMARY
