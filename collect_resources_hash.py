@@ -43,6 +43,8 @@ for i in building_list:
     if data is not None:
         building_info.append({'tokenId': data['token_id'], 'lastAction': data['last_action'], 'lastSpeedUp': data['last_speed_up'],
                          'usages': data['building_stat']['usages'], 'condition': data['condition'], 'buildingId': data['building_id'], 'actionId': data['action_id'], 'citizens': data['citizens']})
+    else:
+        building_info.append({'tokenId': None})
 
 with open("building_info.json", "w") as jsonfile:
     json.dump(building_info, jsonfile)
