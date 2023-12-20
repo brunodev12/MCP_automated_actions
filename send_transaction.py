@@ -3,14 +3,14 @@ import os
 from actionsMCP.entry_point import sendTx
 from tron_to_eth import tronToEth
 
-with open("sign_message_list.json") as jsonfile:
-    sign_message_list = json.load(jsonfile)
-
 address_dict = {
     "trx": tronToEth(os.environ.get('ADDRESS_TRON')),
     "eth": os.environ.get('ADDRESS_ETH'),
     "bsc": os.environ.get('ADDRESS_BSC')
 }
+
+with open("sign_message_list.json") as jsonfile:
+    sign_message_list = json.load(jsonfile)
 
 for i in sign_message_list:
     hash = i[0]

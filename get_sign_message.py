@@ -17,7 +17,6 @@ for i in hash_list:
         else:
             sign_message = signMessageEVM(hash, side)
 
-        # print(sign_message)
         sign_message_list.append([hash, sign_message, side])
 
 with open("sign_message_list.json", "w") as jsonfile:

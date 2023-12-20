@@ -6,6 +6,12 @@ import random
 import time
 import os
 
+address_dict = {
+    "trx": tronToEth(os.environ.get('ADDRESS_TRON')),
+    "eth": os.environ.get('ADDRESS_ETH'),
+    "bsc": os.environ.get('ADDRESS_BSC')
+}
+
 building_list = []
 
 for filename in os.listdir('.'):
@@ -17,12 +23,6 @@ with open(csv_file, 'r') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
         building_list.append(row)
-
-address_dict = {
-    "trx": tronToEth(os.environ.get('ADDRESS_TRON')),
-    "eth": os.environ.get('ADDRESS_ETH'),
-    "bsc": os.environ.get('ADDRESS_BSC')
-}
 
 idx_dict = {
     "trx": random.randint(10000000, 99999999),
@@ -59,36 +59,42 @@ print("======================READY TO COLLECT======================")
 actual_time = int(time.time())
 for i, j in zip(building_info, building_list):
     token_id = i['tokenId']
+
+    days_in_seconds = 0
     if token_id == j['Token id']:
         days_in_seconds = int(j['Collect every X days']) * 86400
-        if days_in_seconds != 0 and i['citizens'] is not None:
-            speed_up = j['Speed up'] == "yes"
-            side = j['Network']
-            address = address_dict[side]
-            idx = idx_dict[side]
-            if (actual_time - int(i['lastAction']) > days_in_seconds):
 
-                message = getMessageCollect(address, side, idx, speed_up,
-                                     token_id, i['buildingId'], i['actionId'])
-                
+    speed_up = False
+    if days_in_seconds != 0 and i['citizens'] is not None:
+        speed_up = j['Speed up'] == "yes"
+        side = j['Network']
+        address = address_dict[side]
+        idx = idx_dict[side]
 
-                if message is not None:
-                    daysLeft = int(message['values'][4])
-                    if daysLeft == 0:
-                        hash = getTxHashCollect(message, side)
-                        hash_list.append([hash, side])
-                        print(hash, "token id:", token_id)
-                    elif speed_up:
-                        lastSpeedUp = i['lastSpeedUp']
-                        last_speed_up = time.mktime(time.strptime(
-                            lastSpeedUp, "%Y-%m-%dT%H:%M:%S.%fZ")) if lastSpeedUp is not None else 0
-                        if actual_time - int(last_speed_up) > 86400:
-                            
-                            message = getMessageCollect(address, side, idx, speed_up,
-                                                    token_id, i['buildingId'], i['actionId'])
-                            hash = getTxHashCollect(message, side)
-                            hash_list.append([hash, side])
-                            print(hash, "token id:", token_id)
+    message = None
+    if (actual_time - int(i['lastAction']) > days_in_seconds):
+        message = getMessageCollect(address, side, idx, speed_up,
+                                token_id, i['buildingId'], i['actionId'])
+        
+    daysLeft = 7
+    if message is not None:
+        daysLeft = int(message['values'][4])
+
+    if daysLeft == 0:
+        hash = getTxHashCollect(message, side)
+        hash_list.append([hash, side])
+        print(hash, "token id:", token_id)
+    elif speed_up:
+        lastSpeedUp = i['lastSpeedUp']
+        last_speed_up = time.mktime(time.strptime(
+            lastSpeedUp, "%Y-%m-%dT%H:%M:%S.%fZ")) if lastSpeedUp is not None else 0
+        if actual_time - int(last_speed_up) > 86400:
+            
+            message = getMessageCollect(address, side, idx, speed_up,
+                                    token_id, i['buildingId'], i['actionId'])
+            hash = getTxHashCollect(message, side)
+            hash_list.append([hash, side])
+            print(hash, "token id:", token_id)
 
 with open("hash_list.json", "w") as jsonfile:
     json.dump(hash_list, jsonfile)
