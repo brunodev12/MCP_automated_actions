@@ -9,7 +9,6 @@ private_key_dict = {
 
 w3 = Web3(EthereumTesterProvider)
 
-
 def signMessageEVM(hash=None, side="eth"):
 
     private_key = private_key_dict[side]
