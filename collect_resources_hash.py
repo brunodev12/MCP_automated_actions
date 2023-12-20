@@ -1,16 +1,9 @@
 import csv
 import json
 from actionsMCP.entry_point import getLandData, getMessageCollect, getTxHashCollect
-from tron_to_eth import tronToEth
-import random
+from data.constants import address_dict, idx_dict
 import time
 import os
-
-address_dict = {
-    "trx": tronToEth(os.environ.get('ADDRESS_TRON')),
-    "eth": os.environ.get('ADDRESS_ETH'),
-    "bsc": os.environ.get('ADDRESS_BSC')
-}
 
 building_list = []
 
@@ -23,12 +16,6 @@ with open(csv_file, 'r') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
         building_list.append(row)
-
-idx_dict = {
-    "trx": random.randint(10000000, 99999999),
-    "eth": random.randint(10000000, 99999999),
-    "bsc": random.randint(10000000, 99999999)
-}
 
 with open("idx.json", "w") as jsonfile:
     json.dump(idx_dict, jsonfile)

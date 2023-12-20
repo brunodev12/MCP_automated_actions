@@ -1,15 +1,10 @@
 from web3 import Web3, EthereumTesterProvider
 from eth_account.messages import encode_defunct
-import os
-
-private_key_dict = {
-    "eth": os.environ.get('PRIVATE_KEY_ETH'),
-    "bsc": os.environ.get('PRIVATE_KEY_BSC')
-}
+from data.constants import private_key_dict
 
 w3 = Web3(EthereumTesterProvider)
 
-def signMessageEVM(hash=None, side="eth"):
+def signMessageEVM(hash=None, side="bsc"):
 
     private_key = private_key_dict[side]
 

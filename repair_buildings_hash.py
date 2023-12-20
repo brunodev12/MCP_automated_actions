@@ -1,14 +1,8 @@
 import csv
 import json
 from actionsMCP.entry_point import getMessageRepair, getTxHashRepair
-from tron_to_eth import tronToEth
+from data.constants import address_dict
 import os
-
-address_dict = {
-    "trx": tronToEth(os.environ.get('ADDRESS_TRON')),
-    "eth": os.environ.get('ADDRESS_ETH'),
-    "bsc": os.environ.get('ADDRESS_BSC')
-}
 
 building_list = []
 
