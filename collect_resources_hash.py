@@ -46,6 +46,8 @@ print("======================READY TO COLLECT======================")
 actual_time = int(time.time())
 for i, j in zip(building_info, building_list):
     token_id = i['tokenId']
+    if token_id is None:
+        continue
 
     days_in_seconds = 0
     if token_id == j['Token id']:
