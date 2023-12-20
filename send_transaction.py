@@ -1,5 +1,4 @@
 import json
-import os
 from actionsMCP.entry_point import sendTx
 from data.constants import address_dict
 
